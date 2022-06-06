@@ -139,7 +139,7 @@ public class DataReverseConverter
             return "";
         }
         for (DataFlag dataFlag : flag) {
-            i = dataFlag.getBit() & i;
+            i = dataFlag.getBit() + i;
         }
         return Integer.toString(i);
     }
@@ -160,6 +160,7 @@ public class DataReverseConverter
         }
 
         if(data.getCp() != null){
+            map.remove(Data.CP);
             Map<String,Object> cpMap = convertDataLevel(data.getCp());
             map.put(Data.CP,cpMap);
         }
