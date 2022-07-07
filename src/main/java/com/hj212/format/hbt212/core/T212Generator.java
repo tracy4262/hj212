@@ -1,13 +1,13 @@
 package com.hj212.format.hbt212.core;
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-
 import com.hj212.format.hbt212.exception.T212FormatException;
 import com.hj212.format.hbt212.model.verify.PacketElement;
 import com.hj212.format.segment.base.cfger.Configurator;
 import com.hj212.format.segment.base.cfger.Configured;
+
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * Created by xiaoyao9184 on 2018/2/24.
@@ -67,7 +67,7 @@ public class T212Generator
      * @throws IOException
      */
     public int writeHexInt32(int i) throws IOException {
-        char[] intChars = Integer.toHexString(i).toCharArray();
+        char[] intChars = String.format("%04X", i & 0xFFFF).toCharArray();
         writer.write(intChars);
         return intChars.length;
     }
